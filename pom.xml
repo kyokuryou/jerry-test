@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>jerry-test</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <parent>
+    <artifactId>jerry-project</artifactId>
+    <groupId>com.jerry</groupId>
+    <version>1.0.0</version>
+  </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.jerry</groupId>
+      <artifactId>jerry-context</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.jerry</groupId>
+      <artifactId>jerry-web</artifactId>
+      <version>1.0.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.jerry</groupId>
+          <artifactId>jerry-context</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.jerry</groupId>
+      <artifactId>jerry-shiro</artifactId>
+      <version>1.0.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.jerry</groupId>
+          <artifactId>jerry-context</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.jerry</groupId>
+          <artifactId>jerry-web</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.jerry</groupId>
+      <artifactId>jerry-web-public</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>jdbc-driver</groupId>
+      <artifactId>mysql</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+    </dependency>
+  </dependencies>
+</project>
