@@ -44,7 +44,7 @@ public class TestController extends DelegatingServiceServlet {
   protected OutputModel getFreeMarkerModel(String target) {
     OutputModel model = new OutputModel();
     if ("navMenu".equals(target)) {
-      model.put(WebConstants.PAYLOAD_ITEMS,
+      model.put(WebConstants.OUTPUT_ITEMS,
           accountResource.build(PlatformType.CONSOLE, ResourceType.ROLE, false))
       ;
     }

@@ -32,13 +32,13 @@ public class ExampleService {
   }
 
   public WebResult delete(InputModel model) {
-    Long id = model.get(WebConstants.PARAM_ID, Long.class);
+    Long id = model.get(WebConstants.INPUT_ID, Long.class);
     exampleDao.delete(id);
     return WebStatusResult.success();
   }
 
   public WebResult detail(InputModel model) {
-    Long id = model.get(WebConstants.PARAM_ID, Long.class);
+    Long id = model.get(WebConstants.INPUT_ID, Long.class);
     return WebModelResult.of(exampleDao.queryForBean(id));
   }
 
