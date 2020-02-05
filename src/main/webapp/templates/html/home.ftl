@@ -1,81 +1,54 @@
 <#compress>
   <template>
-    <div>
-      <p>多选</p>
-      <select-icon multiple v-model="iconValues"></select-icon>
-      <select-tree multiple v-model="treeValues" :data="treeData"></select-tree>
-      <select-grid multiple v-model="gridValues" :data="gridData" show-column="label" :columns="gridColumns"></select-grid>
-      <p>单选</p>
-      <select-icon v-model="iconValue"></select-icon>
-      <select-tree v-model="treeValue" :data="treeData"></select-tree>
-      <select-grid v-model="gridValue" :data="gridData1" show-column="label" :columns="gridColumns"></select-grid>
-      <el-button type="primary" @click="handleClick">主要按钮</el-button>
+    <div class="context-body">
+      <div>
+        <p>是否授权：</p>
+        <p><@shiro.authenticated>已登陆</@shiro.authenticated></p>
+        <p><@shiro.notAuthenticated>未登陆</@shiro.notAuthenticated></p>
+        <p><@shiro.guest>游客</@shiro.guest></p>
+        <p>
+          <@shiro.user>
+            欢迎<@shiro.principal/>
+          </@shiro.user>
+        </p>
+      </div>
+      <el-divider></el-divider>
+      <div>
+        <p>用户信息：</p>
+        <p>用户ID：<@shiro.principal property="id"/></p>
+        <p>用户名：<@shiro.principal property="username"/></p>
+        <p>别名：<@shiro.principal property="alias"/></p>
+      </div>
+      <el-divider></el-divider>
+      <div>
+        <p>授权方式：</p>
+        <p><@shiro.authorizationType value="ACCOUNT">使用帐号授权</@shiro.authorizationType></p>
+        <p><@shiro.authorizationType value="ORGANIZATION">使用机构授权</@shiro.authorizationType></p>
+      </div>
+      <el-divider></el-divider>
+      <div>
+        <p>机构类型：</p>
+        <p><@shiro.organizationType value="PLATFORM">所属机构是平台</@shiro.organizationType></p>
+        <p><@shiro.organizationType value="COMPANY">所属机构是公司</@shiro.organizationType></p>
+        <p><@shiro.organizationType value="SUBCOMPANY">所属机构是子公司</@shiro.organizationType></p>
+        <p><@shiro.organizationType value="DEPARTMENT">所属机构是部门</@shiro.organizationType></p>
+      </div>
+      <el-divider></el-divider>
+      <div>
+        <p>角色：</p>
+        <p><@shiro.hasRole name="CONSOLE_SUPER_ADMIN">拥有超级管理员角色</@shiro.hasRole></p>
+        <p><@shiro.hasRoles name="CONSOLE_SUPER_ADMIN,CONSOLE_728f9dd0">超级管理员并示例角色</@shiro.hasRoles></p>
+        <p><@shiro.hasAnyRoles name="CONSOLE_SUPER_ADMIN,CONSOLE_728f9dd0">超级管理员或示例角色</@shiro.hasAnyRoles></p>
+        <p><@shiro.lacksRole name="CONSOLE_SUPER_ADMIN">不拥有超级管理员角色</@shiro.lacksRole></p>
+      </div>
+      <el-divider></el-divider>
+      <div>
+        <p>权限：</p>
+        <p><@shiro.hasPermission name="CONSOLE:testFinder:modify">拥有文件管理器修改权限</@shiro.hasPermission></p>
+        <p><@shiro.hasPermissions name="CONSOLE:account:list,CONSOLE:testFinder:modify">拥有帐号列表并文件管理器修改权限</@shiro.hasPermissions></p>
+        <p><@shiro.hasAnyPermissions name="CONSOLE:account:list,CONSOLE:testFinder:modify">拥有帐号列表或文件管理器修改权限</@shiro.hasAnyPermissions></p>
+        <p><@shiro.lacksPermission name="CONSOLE:account:list">不拥有帐号列表权限</@shiro.lacksPermission></p>
+      </div>
     </div>
   </template>
-  <script>
-    $.script({
-      imports: ["rich-input", "drawer", "select-icon", "select-tree","select-grid"],
-      exports: {
-        data: function () {
-          return {
-            iconValues: ['icofont-addons'],
-            treeValues: [11, 12],
-            gridValues: [1],
-
-            iconValue: 'icofont-addons',
-            treeValue: 11,
-            gridValue: 1,
-            treeData: [
-              {
-                id: 1,
-                label: "test1",
-                children: [{id: 11, label: "test1-1"}, {id: 12, label: "test1-2"}]
-              },
-              {
-                id: 2,
-                label: "test2",
-                children: [{id: 21, label: "test2-1"}, {id: 22, label: "test2-2"}]
-              }
-            ],
-            gridColumns: [
-              { prop: "id",label:"ID"},
-              { prop: "label",label:"标题"}
-            ],
-            gridData: [
-              {
-                id: 1,
-                label: "test1"
-              },
-              {
-                id: 2,
-                label: "test2"
-              }
-            ],
-            gridData1: [
-              {
-                id: 1,
-                label: "test1"
-              },
-              {
-                id: 2,
-                label: "test2"
-              }
-            ]
-          };
-        },
-        created: function () {
-        },
-        methods: {
-          handleClick: function () {
-            console.info("多选=>");
-            console.info(this.iconValues);
-            console.info(this.treeValues);
-            console.info("单选=>");
-            console.info(this.iconValue);
-            console.info(this.treeValue);
-          }
-        }
-      }
-    })
-  </script>
 </#compress>
