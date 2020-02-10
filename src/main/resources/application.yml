@@ -17,11 +17,11 @@ spring:
     basename: i18n/jerry,i18n/resource
     encoding: UTF-8
     cache-seconds: 3600
-  store:
-    directory: /Users/kyokuryou/tmp/upload
-
   session:
     store-type: jdbc
+  constants:
+    finder:
+      directory: /Users/kyokuryou/tmp/upload
 
 ---
 #############################
