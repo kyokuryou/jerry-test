@@ -1,0 +1,23 @@
+package com.jerry.test.service.example;
+
+import com.jerry.context.common.InputModel;
+import com.jerry.context.common.PlatformType;
+import com.jerry.context.service.finder.FinderService;
+import com.jerry.web.common.WebResult;
+import com.jerry.web.common.WebStatusResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TestFinderService {
+
+  @Autowired
+  private FinderService finderService;
+
+  public WebResult modify(PlatformType platform, InputModel input) {
+    String uuid = input.get("uuid", String.class);
+
+    finderService.shortToStore(uuid, 1L);
+    return WebStatusResult.success();
+  }
+}
