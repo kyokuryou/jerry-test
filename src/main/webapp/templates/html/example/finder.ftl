@@ -7,19 +7,21 @@
           <el-button type="primary" @click="handleSave">保存</el-button>
         </el-col>
       </el-row>
-      <finder v-model="finder" ref="testFinder" :uuid="uuid" :mapping="mapping">
-      </finder>
+      <finder ref="testFinder" :uuid="uuid" :mapping="mapping" :mapping-id="mappingId"></finder>
+      <rich-input v-model="richInput" :uuid="uuid" :mapping="mapping" ></rich-input>
     </div>
   </template>
   <script>
     $.script({
-      imports: ["finder"],
+      imports: ["finder", "rich-input"],
       exports: {
         data: function () {
           return {
             uuid: $.uuid(true), // 启用上传，必须
             mapping: "1000",
-            finder:""
+            mappingId: "1",
+            finder: "",
+            richInput: ""
           };
         },
         methods: {

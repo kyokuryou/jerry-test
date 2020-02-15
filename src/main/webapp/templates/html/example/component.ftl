@@ -488,52 +488,364 @@
                   }]
                 },
                 drawer: {
-                  props: [],
-                  events: [],
-                  methods: [],
-                  slots: []
+                  props: [{
+                    prop: "title",
+                    type: "String",
+                    value: "-",
+                    remark: "标题。"
+                  }, {
+                    prop: "direction",
+                    type: "String",
+                    value: "rtl",
+                    remark: "Drawer 打开的方向,rtl / ltr / ttb / btt。"
+                  }, {
+                    prop: "size",
+                    type: "number/string",
+                    value: "30%",
+                    remark: "Drawer 窗体的大小, 当使用 number 类型时, 以像素为单位, 当使用 string 类型时, 请传入 'x%', 否则便会以 number 类型解释。"
+                  }, {
+                    prop: "destroy-close",
+                    type: "boolean",
+                    value: "true",
+                    remark: "控制是否在关闭 Drawer 之后将子元素全部销毁。"
+                  }, {
+                    prop: "modal-append-body",
+                    type: "boolean",
+                    value: "true",
+                    remark: "遮罩层是否插入至 body 元素上，若为 false，则遮罩层会插入至 Drawer 的父元素上。"
+                  }, {
+                    prop: "append-body",
+                    type: "boolean",
+                    value: "false",
+                    remark: "Drawer 自身是否插入至 body 元素上。嵌套的 Drawer 必须指定该属性并赋值为 true。"
+                  }, {
+                    prop: "before-open",
+                    type: "Function()",
+                    value: "-",
+                    remark: "打开前回调，返回false,终止打开。"
+                  }, {
+                    prop: "before-close",
+                    type: "Function()",
+                    value: "-",
+                    remark: "关闭前回调，返回false,终止关闭。"
+                  }, {
+                    prop: "full-screen",
+                    type: "boolean",
+                    value: "false",
+                    remark: "全屏显示。"
+                  }, {
+                    prop: "show-full-screen",
+                    type: "boolean",
+                    value: "false",
+                    remark: "显示全屏按钮。"
+                  }],
+                  events: [{
+                    prop: "on-open",
+                    remark: "Drawer 打开动画结束时事件。",
+                    params: "-"
+                  }, {
+                    prop: "on-close",
+                    remark: "Drawer 关闭动画结束时事件。",
+                    params: "-"
+                  }, {
+                    prop: "on-change-screen",
+                    remark: "全屏/正常切换改变事件。full/none",
+                    params: "currentScreen"
+                  }],
+                  methods: [{
+                    prop: "open",
+                    remark: "打开Drawer。",
+                    params: "-"
+                  }, {
+                    prop: "close",
+                    remark: "关闭Drawer。",
+                    params: "-"
+                  }],
+                  slots: [{
+                    name: "-",
+                    remark: "Drawer 的内容。",
+                    props: "-"
+                  }, {
+                    name: "footer",
+                    remark: "Drawer 的脚。",
+                    props: "-"
+                  }]
                 },
                 window: {
-                  props: [],
-                  events: [],
-                  methods: [],
-                  slots: []
+                  props: [{
+                    prop: "title",
+                    type: "String",
+                    value: "-",
+                    remark: "标题。"
+                  }, {
+                    prop: "width",
+                    type: "number/string",
+                    value: "50%",
+                    remark: "window 窗体的大小, 当使用 number 类型时, 以像素为单位, 当使用 string 类型时, 请传入 'x%', 否则便会以 number 类型解释。"
+                  }, {
+                    prop: "destroy-close",
+                    type: "boolean",
+                    value: "true",
+                    remark: "控制是否在关闭 window 之后将子元素全部销毁。"
+                  }, {
+                    prop: "modal-append-body",
+                    type: "boolean",
+                    value: "true",
+                    remark: "遮罩层是否插入至 body 元素上，若为 false，则遮罩层会插入至 Drawer 的父元素上。"
+                  }, {
+                    prop: "append-body",
+                    type: "boolean",
+                    value: "false",
+                    remark: "Drawer 自身是否插入至 body 元素上。嵌套的 Drawer 必须指定该属性并赋值为 true。"
+                  }, {
+                    prop: "before-open",
+                    type: "Function()",
+                    value: "-",
+                    remark: "打开前回调，返回false,终止打开。"
+                  }, {
+                    prop: "before-close",
+                    type: "Function()",
+                    value: "-",
+                    remark: "关闭前回调，返回false,终止关闭。"
+                  }, {
+                    prop: "full-screen",
+                    type: "boolean",
+                    value: "false",
+                    remark: "全屏显示。"
+                  }, {
+                    prop: "show-full-screen",
+                    type: "boolean",
+                    value: "false",
+                    remark: "显示全屏按钮。"
+                  }],
+                  events: [{
+                    prop: "on-open",
+                    remark: "window 打开动画结束时事件。",
+                    params: "-"
+                  }, {
+                    prop: "on-close",
+                    remark: "window 关闭动画结束时事件。",
+                    params: "-"
+                  }, {
+                    prop: "on-change-screen",
+                    remark: "全屏/正常切换改变事件。full/none",
+                    params: "currentScreen"
+                  }],
+                  methods: [{
+                    prop: "open",
+                    remark: "打开window。",
+                    params: "-"
+                  }, {
+                    prop: "close",
+                    remark: "关闭window。",
+                    params: "-"
+                  }],
+                  slots: [{
+                    name: "-",
+                    remark: "window 的内容。",
+                    props: "-"
+                  }, {
+                    name: "footer",
+                    remark: "window 的脚。",
+                    props: "-"
+                  }]
                 },
                 finder: {
-                  props: [],
-                  events: [],
-                  methods: [],
-                  slots: []
+                  props: [{
+                    prop: "title",
+                    type: "String",
+                    value: "文件管理器",
+                    remark: "标题。"
+                  }, {
+                    prop: "types",
+                    type: "array",
+                    value: "['image', 'video', 'pdf', 'file']",
+                    remark: "显示文件类型，image/video/pdf/file。"
+                  }, {
+                    prop: "uuid",
+                    type: "string",
+                    value: "-",
+                    remark: "本次回话唯一标示，lazy为true 必须。"
+                  }, {
+                    prop: "lazy",
+                    type: "boolean",
+                    value: "true",
+                    remark: "延时上传。"
+                  }, {
+                    prop: "mapping",
+                    type: "string",
+                    value: "-",
+                    remark: "必须，与finder.mapping值对应。"
+                  }, {
+                    prop: "mapping-id",
+                    type: "string",
+                    value: "-",
+                    remark: "lazy为true 必须，与finder.mappingId值对应。"
+                  }],
+                  events: [{
+                    prop: "on-open",
+                    remark: "打开动画结束时事件。",
+                    params: "-"
+                  }, {
+                    prop: "on-close",
+                    remark: "关闭动画结束时事件。",
+                    params: "-"
+                  }, {
+                    prop: "on-confirm",
+                    remark: "确认按钮点击时事件。",
+                    params: "-"
+                  }],
+                  methods: [{
+                    prop: "open",
+                    remark: "打开。",
+                    params: "-"
+                  }, {
+                    prop: "close",
+                    remark: "关闭。",
+                    params: "-"
+                  }, {
+                    prop: "finish",
+                    remark: "完成本次回话。",
+                    params: "-"
+                  }]
                 },
                 preview: {
-                  props: [],
-                  events: [],
-                  methods: [],
-                  slots: []
+                  props: [{
+                    prop: "z-index",
+                    type: "number",
+                    value: "2000",
+                    remark: "设置预览的 z-index。"
+                  }, {
+                    prop: "manual",
+                    type: "boolean",
+                    value: "false",
+                    remark: "是否手动打开。"
+                  }, {
+                    prop: "url-list",
+                    type: "array",
+                    value: "[]",
+                    remark: "预览资源地址。"
+                  }, {
+                    prop: "type",
+                    type: "string",
+                    value: "image",
+                    remark: "预览资源类型，image/video/pdf。"
+                  }],
+                  events: [{
+                    prop: "on-close",
+                    remark: "关闭事件。",
+                    params: "-"
+                  }, {
+                    prop: "on-switch",
+                    remark: "切换事件。",
+                    params: "-"
+                  }],
+                  methods: [{
+                    prop: "show",
+                    remark: "显示。",
+                    params: "-"
+                  }, {
+                    prop: "hide",
+                    remark: "隐藏。",
+                    params: "-"
+                  }]
                 },
                 richInput: {
-                  props: [],
-                  events: [],
-                  methods: [],
-                  slots: []
+                  props: [{
+                    prop: "value / v-model",
+                    type: "String",
+                    value: "-",
+                    remark: "绑定值。"
+                  }, {
+                    prop: "width",
+                    type: "String",
+                    value: "1000px",
+                    remark: "RichInput 的高度，默认为1000px宽度。如果 height 为 number 类型，单位 px；如果 height 为 string 类型，则这个高度会设置为 Table 的 style.height 的值，Table 的高度会受控于外部样式。。"
+                  }],
+                  events: [{
+                    prop: "",
+                    remark: "。",
+                    params: ""
+                  }],
+                  methods: [{
+                    prop: "",
+                    remark: "。",
+                    params: "-"
+                  }],
+                  slots: [{
+                    name: "",
+                    remark: "",
+                    props: "-"
+                  }]
                 },
                 selectGrid: {
-                  props: [],
-                  events: [],
-                  methods: [],
-                  slots: []
+                  props: [{
+                    prop: "",
+                    type: "",
+                    value: "-",
+                    remark: "。"
+                  }],
+                  events: [{
+                    prop: "",
+                    remark: "。",
+                    params: ""
+                  }],
+                  methods: [{
+                    prop: "",
+                    remark: "。",
+                    params: "-"
+                  }],
+                  slots: [{
+                    name: "",
+                    remark: "",
+                    props: "-"
+                  }]
                 },
                 selectIcon: {
-                  props: [],
-                  events: [],
-                  methods: [],
-                  slots: []
+                  props: [{
+                    prop: "",
+                    type: "",
+                    value: "-",
+                    remark: "。"
+                  }],
+                  events: [{
+                    prop: "",
+                    remark: "。",
+                    params: ""
+                  }],
+                  methods: [{
+                    prop: "",
+                    remark: "。",
+                    params: "-"
+                  }],
+                  slots: [{
+                    name: "",
+                    remark: "",
+                    props: "-"
+                  }]
                 },
                 selectTree: {
-                  props: [],
-                  events: [],
-                  methods: [],
-                  slots: []
+                  props: [{
+                    prop: "",
+                    type: "",
+                    value: "-",
+                    remark: "。"
+                  }],
+                  events: [{
+                    prop: "",
+                    remark: "。",
+                    params: ""
+                  }],
+                  methods: [{
+                    prop: "",
+                    remark: "。",
+                    params: "-"
+                  }],
+                  slots: [{
+                    name: "",
+                    remark: "",
+                    props: "-"
+                  }]
                 }
               }
             }
