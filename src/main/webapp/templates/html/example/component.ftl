@@ -324,15 +324,15 @@
                     params: "column, event"
                   }, {
                     prop: "on-sort-change",
-                    remark: "当表格的排序条件发生变化的时候会触发该事件order{sort:排序字段名,order:排序方式（asc/desc）}，lazy为false时生效。",
+                    remark: "当表格的排序条件发生变化的时候会触发该事件order{sort:排序字段名,order:排序方式（asc/desc）}，lazy为true时自动重新加载数据。",
                     params: "order"
                   }, {
                     prop: "on-filter-change",
-                    remark: "当表格的筛选条件发生变化的时候会触发该事件，参数的值是一个对象，对象的 key 是 column 的 columnKey，对应的 value 为用户选择的筛选条件的数组，lazy为false时生效。",
+                    remark: "当表格的筛选条件发生变化的时候会触发该事件，参数的值是一个对象，对象的 key 是 column 的 columnKey，对应的 value 为用户选择的筛选条件的数组，lazy为true时自动重新加载数据。",
                     params: "filter"
                   }, {
                     prop: "on-pagination-change",
-                    remark: "分页发生变化事件，pagination为true且lazy为false时生效，{pageNumber: 当前页码,pageSize: 分页大小, pageCount: 页数,total: 总数}。",
+                    remark: "分页发生变化事件，pagination为true时生效，{pageNumber: 当前页码,pageSize: 分页大小, pageCount: 页数,total: 总数}。lazy为true时自动重新加载数据",
                     params: "pager"
                   }, {
                     prop: "on-current-row-change",
@@ -673,35 +673,23 @@
                     remark: "延时上传。"
                   }, {
                     prop: "mapping",
-                    type: "string",
+                    type: "string/number",
                     value: "-",
                     remark: "必须，与finder.mapping值对应。"
                   }, {
                     prop: "mapping-id",
-                    type: "string",
+                    type: "string/number",
                     value: "-",
-                    remark: "lazy为true 必须，与finder.mappingId值对应。"
+                    remark: "lazy为true 必须，与finder.mappingId值对应，无值导致无法读取已存在资源。"
                   }],
                   events: [{
-                    prop: "on-open",
-                    remark: "打开动画结束时事件。",
-                    params: "-"
-                  }, {
-                    prop: "on-close",
-                    remark: "关闭动画结束时事件。",
-                    params: "-"
-                  }, {
-                    prop: "on-confirm",
-                    remark: "确认按钮点击时事件。",
-                    params: "-"
+                    prop: "on-selection-change",
+                    remark: "当选择项发生变化时会触发该事件。",
+                    params: "type,selection"
                   }],
                   methods: [{
-                    prop: "open",
-                    remark: "打开。",
-                    params: "-"
-                  }, {
-                    prop: "close",
-                    remark: "关闭。",
+                    prop: "clearSelection",
+                    remark: "清空用户的选择。",
                     params: "-"
                   }, {
                     prop: "finish",
@@ -732,8 +720,12 @@
                     remark: "预览资源类型，image/video/pdf。"
                   }],
                   events: [{
-                    prop: "on-close",
-                    remark: "关闭事件。",
+                    prop: "on-show",
+                    remark: "显示事件。",
+                    params: "-"
+                  }, {
+                    prop: "on-hide",
+                    remark: "隐藏事件。",
                     params: "-"
                   }, {
                     prop: "on-switch",
@@ -757,25 +749,58 @@
                     value: "-",
                     remark: "绑定值。"
                   }, {
-                    prop: "width",
-                    type: "String",
-                    value: "1000px",
-                    remark: "RichInput 的高度，默认为1000px宽度。如果 height 为 number 类型，单位 px；如果 height 为 string 类型，则这个高度会设置为 Table 的 style.height 的值，Table 的高度会受控于外部样式。。"
+                    prop: "lazy",
+                    type: "boolean",
+                    value: "true",
+                    remark: "延时上传。"
+                  }, {
+                    prop: "mapping",
+                    type: "string/number",
+                    value: "-",
+                    remark: "必须，与finder.mapping值对应。"
+                  }, {
+                    prop: "modal-append-body",
+                    type: "boolean",
+                    value: "true",
+                    remark: "文件管理器是window组件，遮罩层是否插入至 body 元素上，若为 false，则遮罩层会插入至父元素上。"
+                  }, {
+                    prop: "append-body",
+                    type: "boolean",
+                    value: "false",
+                    remark: "文件管理器是window组件，自身是否插入至 body 元素上。嵌套的 Drawer 必须指定该属性并赋值为 true。"
+                  }, {
+                    prop: "mapping-id",
+                    type: "string/number",
+                    value: "-",
+                    remark: "lazy为true 必须，与finder.mappingId值对应，无值导致无法读取已存在资源。"
+                  }, {
+                    prop: "readonly",
+                    type: "boolean",
+                    value: "false",
+                    remark: "只读模式。"
+                  },{
+                    prop: "placeholder",
+                    type: "string",
+                    value: "ui.placeholder.input",
+                    remark: "输入框占位文本。"
                   }],
                   events: [{
-                    prop: "",
-                    remark: "。",
-                    params: ""
-                  }],
-                  methods: [{
-                    prop: "",
-                    remark: "。",
+                    prop: "input",
+                    remark: "在值改变时触发。",
+                    params: "(value: string | number)"
+                  },{
+                    prop: "change",
+                    remark: "仅在输入框失去焦点或用户按下回车时触发。",
+                    params: "(value: string | number)"
+                  },{
+                    prop: "focus",
+                    remark: "获得焦点时触发。",
                     params: "-"
                   }],
-                  slots: [{
-                    name: "",
-                    remark: "",
-                    props: "-"
+                  methods: [{
+                    prop: "focus",
+                    remark: "使 input 获取焦点。",
+                    params: "-"
                   }]
                 },
                 selectGrid: {
