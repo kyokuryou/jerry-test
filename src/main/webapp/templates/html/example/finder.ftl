@@ -31,7 +31,10 @@
             <select-icon v-model="window.form.icon"></select-icon>
           </el-form-item>
           <el-form-item label="活动区域" prop="region">
-            <select-tree v-model="window.form.region"></select-tree>
+            <select-tree v-model="window.form.region"
+                         :leaf-only="window.region.leafOnly"
+                         :data="window.region.data">
+            </select-tree>
           </el-form-item>
           <el-form-item label="活动性质" prop="type">
             <select-grid v-model="window.form.type" multiple show-column="name"
@@ -96,6 +99,30 @@
                 uuid: $.uuid(true),
                 mapping: 1000,
                 mappingId: 0
+              },
+              region: {
+                leafOnly: true,
+                data: [{
+                  id: 1,
+                  label: "北京市",
+                  isLeaf: true
+                }, {
+                  id: 2,
+                  label: "上海市",
+                  isLeaf: true
+                }, {
+                  id: 3,
+                  label: "辽宁省",
+                  children: [{
+                    id: 4,
+                    label: "沈阳市",
+                    isLeaf: true
+                  }, {
+                    id: 5,
+                    label: "大连市",
+                    isLeaf: true
+                  }]
+                }]
               },
               type: {
                 columns: [
