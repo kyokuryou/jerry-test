@@ -80,10 +80,10 @@
                   {min: 2, max: 25, message: '长度在 2 到 25 个字符', trigger: 'blur'}
                 ],
                 icon: [
-                  {required: true, message: '请选择图标', trigger: 'blur'}
+                  {required: true, message: '请选择图标', trigger: 'change'}
                 ],
                 region: [
-                  {required: true, message: '请选择区域', trigger: 'blur'}
+                  {required: true, message: '请选择区域', trigger: 'change'}
                 ],
                 type: [
                   {required: true, type: 'array', message: '请选择性质', trigger: 'change'}
@@ -192,10 +192,6 @@
           }
         },
         methods: {
-          pathValidator: function (rule, value, callback) {
-            debugger;
-            callback(new Error("请输入页面地址"));
-          },
           handleLoader: function (params, success, done) {
             var _safe = this;
             var result = {
@@ -238,7 +234,23 @@
 
           },
           handleSave: function () {
-
+            var _safe = this;
+            var _form = $.extend({}, _safe.window.form);
+            var _rows = _safe.rows.concat();
+            var _index = _safe.rows.findIndex(function (value) {
+              return value.id === _form.id;
+            });
+            _form["typeNames"] = _form.type.map(function (type) {
+              var row = _safe.window.type.rows.find(function (typeRows) {
+                return typeRows.id === type;
+              });
+              return row.name;
+            });
+            _form["regionName"] = _safe.window.region.data.find(function (data) {
+              return data.id === _form.region;
+            }).label;
+            _safe.rows.splice(_index, 1, _form);
+            _safe.window.status = -1;
           },
           handleClose: function () {
             this.window.status = -1;
