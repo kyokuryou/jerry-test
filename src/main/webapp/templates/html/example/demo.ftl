@@ -13,6 +13,8 @@
           <span>{{scope.$value.join()}}</span>
         </template>
         <template slot="operate" slot-scope="scope">
+          <el-button type="text" size="small" @click="handleDetail(scope.row.id)">查看
+          </el-button>
           <el-button type="text" size="small" @click="handleEdit(scope.row.id)">编辑
           </el-button>
           <el-button type="text" size="small" @click="handleDelete(scope.row.id)">删除
@@ -23,7 +25,8 @@
       <window ref="testWindow" :title="window.title"
               width="1000px"
               @on-close="handleClose">
-        <el-form :model="window.form" :rules="window.rules" ref="testForm" label-width="100px">
+        <el-form :model="window.form" :rules="window.rules" ref="testForm"
+                 label-width="100px" label-suffix="：">
           <el-form-item label="活动名称" prop="name">
             <el-input v-model="window.form.name"></el-input>
           </el-form-item>
@@ -60,15 +63,52 @@
           </el-button>
         </div>
       </window>
+      <drawer ref="testDrawer" :title="drawer.title"
+              size="30%"
+              @on-close="handleClose">
+        <el-form label-width="100px" label-suffix="：">
+          <el-form-item label="活动名称">
+            <span>{{drawer.form.name}}</span>
+          </el-form-item>
+          <el-form-item label="活动图标">
+            <span>{{drawer.form.icon}}</span>
+          </el-form-item>
+          <el-form-item label="活动区域">
+            <span>{{drawer.form.regionName}}</span>
+          </el-form-item>
+          <el-form-item label="活动性质">
+            <span>{{drawer.form.typeNames?drawer.form.typeNames.join():""}}</span>
+          </el-form-item>
+          <el-form-item label="活动形式">
+            <div v-html="drawer.form.desc"></div>
+          </el-form-item>
+        </el-form>
+        <div slot="footer">
+          <el-button @click="handleClose">
+            <@spring.message code="ui.operate.close"/>
+          </el-button>
+        </div>
+      </drawer>
     </div>
   </template>
   <script>
     $.script({
-      imports: ["data-grid", "rich-input", "select-grid", "select-icon", "select-tree"],
+      imports: [
+        "window", "drawer",
+        "data-grid",
+        "rich-input", "select-grid", "select-icon", "select-tree"
+      ],
       exports: {
         data: function () {
           var _safe = this;
           return {
+            drawer: {
+              loading: false,
+              title: "",
+              status: -1,
+              refs: {0: "testDrawer"},
+              form: {}
+            },
             window: {
               loading: false,
               title: "",
@@ -189,6 +229,22 @@
               }
               _ow.open();
             }
+          },
+          "drawer.status": function (val, oldval) {
+            var _safe = this;
+            if (val === -1) {
+              var _cw = _safe.$refs[_safe.drawer.refs[oldval]];
+              if (_cw) {
+                _safe.drawer.title = "";
+                _safe.drawer.form = {};
+                _cw.close();
+              }
+              return;
+            }
+            var _ow = _safe.$refs[_safe.drawer.refs[val]];
+            if (_ow) {
+              _ow.open();
+            }
           }
         },
         methods: {
@@ -230,13 +286,35 @@
               _safe.window.status = 1;
             }, 100);
           },
+          handleDetail: function (id) {
+            var _safe = this;
+            var _item = _safe.rows.find(function (value) {
+              return value.id === id;
+            });
+            setTimeout(function () {
+              _safe.drawer.form = {
+                name: _item.name,
+                icon: _item.icon,
+                regionName: _item.regionName,
+                typeNames: _item.typeNames,
+                desc: $.escape.html(_item.desc)
+              };
+              _safe.drawer.status = 0;
+              _safe.drawer.title = _item.name;
+            }, 100);
+          },
           handleDelete: function (id) {
-
+            var _safe = this;
+            $.msg.confirm("确定要删除？").done(function () {
+              var _index = _safe.rows.findIndex(function (value) {
+                return value.id === id;
+              });
+              _safe.rows.splice(_index, 1);
+            });
           },
           handleSave: function () {
             var _safe = this;
             var _form = $.extend({}, _safe.window.form);
-            var _rows = _safe.rows.concat();
             var _index = _safe.rows.findIndex(function (value) {
               return value.id === _form.id;
             });
@@ -253,6 +331,7 @@
             _safe.window.status = -1;
           },
           handleClose: function () {
+            this.drawer.status = -1;
             this.window.status = -1;
           }
         }
