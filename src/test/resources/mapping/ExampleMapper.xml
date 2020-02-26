@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jerry.junit.service.ExampleMapper">
+  <select id="queryOne" resultType="com.jerry.junit.service.ExampleEntity">
+    select * from t_example where id=#{id}
+  </select>
+  <select id="queryAll" resultType="com.jerry.junit.service.ExampleEntity">
+  </select>
+
+  <select id="queryForPagination" resultType="com.jerry.junit.service.ExampleEntity">
+    select id, enabled, create_org, create_user, create_time, modify_org, modify_user, modify_time, access_code, username, password, address, memo from t_example
+    where username like CONCAT('%',#{username},'%')
+  </select>
+
+  <select id="countExample" resultType="int">
+    select count(1)
+    from t_example
+  </select>
+  <insert id="insertExample">
+    insert into t_example (id, enabled, create_org, create_user, create_time, access_code, username, `password`, address, memo)
+     VALUES (#{id},#{enabled},#{createOrg},#{createUser},#{createTime},#{accessCode},#{username},#{password},#{address},#{memo})
+  </insert>
+  <update id="updateExample"></update>
+  <update id="updateExampleNoParams"></update>
+  <insert id="insertExampleEmpty" keyColumn="id" keyProperty="id" useGeneratedKeys="true" ></insert>
+</mapper>

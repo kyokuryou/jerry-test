@@ -1,4 +1,4 @@
-package com.jerry.test.service.test;
+package com.jerry.junit.service;
 
 import com.jerry.context.common.BaseEntity;
 import javax.persistence.Column;
@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity(name = "example")
-@Table(name = "SYS_EXAMPLE")
+@Table(name = "T_EXAMPLE")
 public class ExampleEntity extends BaseEntity {
 
   @Column(name = "USERNAME")

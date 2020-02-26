@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+  <include resource="logback-default.xml"/>
+  <property resource="application.yml"/>
+  <springProfile name="prod">
+    <logger level="error" name="com.jerry.test" additivity="false">
+      <appender-ref ref="FILE_DEBUG"/>
+      <appender-ref ref="FILE_ACCESS"/>
+    </logger>
+  </springProfile>
+  <springProfile name="dev">
+    <logger level="debug" name="com.jerry.junit" additivity="false">
+      <appender-ref ref="CONSOLE"/>
+    </logger>
+  </springProfile>
+</configuration>

@@ -1,4 +1,4 @@
-package com.jerry.test.service.test;
+package com.jerry.junit.service;
 
 import com.jerry.context.common.Constants;
 import com.jerry.context.common.InputModel;
@@ -19,13 +19,13 @@ import org.springframework.stereotype.Service;
 public class ExampleService {
 
   @Autowired
-  private ExampleDao exampleDao;
+  private ExampleRepository exampleRepository;
 
   @SupportedRequest(contentTypes = {MediaType.APPLICATION_XML_VALUE})
   public WebResult list(InputModel model) {
     Pagination pager = model.get(Pagination.class, new Pagination());
     try {
-      return WebModelResult.of(exampleDao.queryForPagination(pager));
+      return WebModelResult.of(exampleRepository.queryForPagination(pager));
     } catch (NullPointerException e) {
       throw new ServiceException(2001);
     }
@@ -33,13 +33,13 @@ public class ExampleService {
 
   public WebResult delete(InputModel model) {
     Long id = model.get(WebConstants.INPUT_ID, Long.class);
-    exampleDao.delete(id);
+    exampleRepository.delete(id);
     return WebStatusResult.success();
   }
 
   public WebResult detail(InputModel model) {
     Long id = model.get(WebConstants.INPUT_ID, Long.class);
-    return WebModelResult.of(exampleDao.queryForBean(id));
+    return WebModelResult.of(exampleRepository.queryForBean(id));
   }
 
   public WebResult update(InputModel model) {
@@ -48,14 +48,14 @@ public class ExampleService {
       return WebStatusResult.of(Constants.DATA_NOT_FOUND);
     }
     entity.setModifyTime(DateUtil.getNow());
-    exampleDao.saveOrUpdate(entity);
+    exampleRepository.saveOrUpdate(entity);
     return WebStatusResult.success();
   }
 
   public WebResult insert(InputModel model) {
     ExampleEntity entity = model.get(ExampleEntity.class);
     entity.setCreateTime(DateUtil.getNow());
-    exampleDao.saveOrUpdate(entity);
+    exampleRepository.saveOrUpdate(entity);
     return WebStatusResult.success();
   }
 }
