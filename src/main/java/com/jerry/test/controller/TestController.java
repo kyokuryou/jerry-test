@@ -23,14 +23,14 @@ public class TestController extends ShiroDelegatingServiceServlet {
   }
 
   @Override
-  protected OutputModel getFreeMarkerModel(String target) {
-    OutputModel model = new OutputModel();
-    if ("navMenu".equals(target)) {
-      model.put(WebConstants.OUTPUT_ITEMS,
-          accountResource.build(PlatformType.CONSOLE, ResourceType.ROLE, false))
-      ;
+  protected OutputModel getTemplateModel(String viewName) {
+    OutputModel output = super.getTemplateModel(viewName);
+    if ("/component/navMenu".equals(viewName)) {
+      output.put(WebConstants.OUTPUT_ITEMS,
+          accountResource.build(PlatformType.CONSOLE, ResourceType.ROLE, false)
+      );
     }
-    return model;
+    return output;
   }
 
   @Override
