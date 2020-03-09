@@ -19,7 +19,9 @@ spring:
     cache-seconds: 3600
   session:
     store-type: jdbc
-  constants:
+
+jerry:
+  context:
     finder:
       directory: /Users/kyokuryou/tmp/upload
 
@@ -35,6 +37,7 @@ spring:
     password: 123456
   freemarker:
     cache: false
+jerry:
   shiro:
     single-session: false
 
