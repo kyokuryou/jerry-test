@@ -51,4 +51,22 @@
       </div>
     </div>
   </template>
+  <script>
+    $.script({
+      imports: [],
+      exports: {
+        data: function () {
+          return {};
+        },
+        created: function () {
+        },
+        activated: function () {
+          console.info("home-activated");
+        },
+        deactivated: function () {
+          console.info("home-deactivated");
+        }
+      }
+    })
+  </script>
 </#compress>
