@@ -17,7 +17,7 @@ public class TestFinderService {
   public WebResult modify(PlatformType platform, InputModel input) {
     String uuid = input.get("uuid", String.class);
 
-    finderService.shortToStore(uuid, 1L);
+    finderService.saveTemp(uuid, 1L);
     return WebStatusResult.success();
   }
 }

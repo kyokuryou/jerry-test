@@ -782,10 +782,10 @@
                     value: "true",
                     remark: "延时上传。"
                   }, {
-                    prop: "mapping",
+                    prop: "mapping-code",
                     type: "string/number",
                     value: "-",
-                    remark: "必须，与finder.mapping值对应。"
+                    remark: "必须，与finder.mappingCode值对应。"
                   }, {
                     prop: "mapping-id",
                     type: "string/number",
@@ -869,10 +869,10 @@
                     value: "true",
                     remark: "延时上传。"
                   }, {
-                    prop: "mapping",
+                    prop: "mapping-code",
                     type: "string/number",
                     value: "-",
-                    remark: "必须，与finder.mapping值对应。"
+                    remark: "必须，与finder.mappingCode值对应。"
                   }, {
                     prop: "mapping-id",
                     type: "string/number",
@@ -1133,7 +1133,7 @@
                   params: "file",
                   remark: "验证文件大小是否合格"
                 }, {
-                  prop: "$.finder.isShortFile",
+                  prop: "$.finder.isTempFile",
                   params: "object",
                   remark: "验证数据是否时临时文件"
                 }, {
@@ -1150,17 +1150,17 @@
                   params: "string, time",
                   remark: "返回指定标记的预览地址"
                 }, {
-                  prop: "$.finder.shortUpload",
+                  prop: "$.finder.tempUpload",
                   params: "object,callback",
-                  remark: "上传临时文件，不保存磁盘，参数：{uuid,mapping,file:file对象或带http|https|ftp地址的字符串}callback:{beforeSend,done,fail,always}参照$.Deferred"
+                  remark: "上传临时文件，不保存磁盘，参数：{uuid,mappingCode,file:file对象或带http|https|ftp地址的字符串}callback:{beforeSend,done,fail,always}参照$.Deferred"
                 }, {
-                  prop: "$.finder.shortReplace",
+                  prop: "$.finder.tempReplace",
                   params: "object,callback",
-                  remark: "替换已上传临时文件，不保存磁盘，参数：{uuid,mark,file:file}callback:{beforeSend,done,fail,always}参照$.Deferred"
+                  remark: "替换已上传临时文件，不保存磁盘，参数：{uuid,fileId,file:file}callback:{beforeSend,done,fail,always}参照$.Deferred"
                 }, {
                   prop: "$.finder.list",
                   params: "object,callback",
-                  remark: "文件列表，不包含临时文件，参数：{mapping,mappingId}callback:{beforeSend,done,fail,always}参照$.Deferred"
+                  remark: "文件列表，不包含临时文件，参数：{mappingCode,mappingId}callback:{beforeSend,done,fail,always}参照$.Deferred"
                 }, {
                   prop: "$.finder.download",
                   params: "number|string",
@@ -1172,7 +1172,7 @@
                 }, {
                   prop: "$.finder.upload",
                   params: "object,callback",
-                  remark: "上传文件并保存磁盘，参数：{mapping,mappingId,file:file对象或带http|https|ftp地址的字符串}callback:{beforeSend,done,fail,always}参照$.Deferred"
+                  remark: "上传文件并保存磁盘，参数：{mappingCode,mappingId,file:file对象或带http|https|ftp地址的字符串}callback:{beforeSend,done,fail,always}参照$.Deferred"
                 }, {
                   prop: "$.finder.replace",
                   params: "object,callback",

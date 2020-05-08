@@ -47,7 +47,7 @@
           <el-form-item label="活动形式" prop="desc">
             <rich-input v-model="window.form.desc"
                         :uuid="window.finder.uuid"
-                        :mapping="window.finder.mapping"
+                        :mapping-code="window.finder.mappingCode"
                         :mapping-id="window.finder.mappingId"
                         :modal-append-body="false"
                         :append-body="true">
@@ -137,8 +137,8 @@
               finder: {
                 // 启用上传，必须
                 uuid: $.uuid(true),
-                mapping: 1000,
-                mappingId: 0
+                mappingId: 0,
+                mappingCode: 1000
               },
               region: {
                 leafOnly: true,
