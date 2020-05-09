@@ -782,15 +782,20 @@
                     value: "true",
                     remark: "延时上传。"
                   }, {
+                    prop: "mapping-id",
+                    type: "string/number",
+                    value: "-",
+                    remark: "必须，与finder.mappingId值对应，无值导致无法读取已存在资源。"
+                  }, {
                     prop: "mapping-code",
                     type: "string/number",
                     value: "-",
                     remark: "必须，与finder.mappingCode值对应。"
                   }, {
-                    prop: "mapping-id",
-                    type: "string/number",
-                    value: "-",
-                    remark: "必须，与finder.mappingId值对应，无值导致无法读取已存在资源。"
+                    prop: "append-body",
+                    type: "boolean",
+                    value: "false",
+                    remark: "Finder 自身是否插入至 body 元素上。嵌套的 Finder 必须指定该属性并赋值为 true。"
                   }],
                   events: [{
                     prop: "on-selection-change",
@@ -869,15 +874,15 @@
                     value: "true",
                     remark: "延时上传。"
                   }, {
-                    prop: "mapping-code",
-                    type: "string/number",
-                    value: "-",
-                    remark: "必须，与finder.mappingCode值对应。"
-                  }, {
                     prop: "mapping-id",
                     type: "string/number",
                     value: "-",
                     remark: "lazy为true 必须，与finder.mappingId值对应，无值导致无法读取已存在资源。"
+                  }, {
+                    prop: "mapping-code",
+                    type: "string/number",
+                    value: "-",
+                    remark: "必须，与finder.mappingCode值对应。"
                   }, {
                     prop: "modal-append-body",
                     type: "boolean",
