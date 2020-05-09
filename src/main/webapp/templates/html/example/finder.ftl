@@ -4,8 +4,8 @@
       <el-row>
         <el-col :span="24">
           当前上传模式：
-          <el-button type="primary" @click="_changeFinderLazy">{{button.lazyText}}</el-button>
-          <el-button type="primary" @click="_openFinderWindow">使用窗体打开</el-button>
+          <el-button type="primary" @click="_changeLazy">{{button.lazyText}}</el-button>
+          <el-button type="primary" @click="_openWindow">使用窗体打开</el-button>
         </el-col>
       </el-row>
       <el-divider></el-divider>
@@ -14,12 +14,12 @@
               :mapping-code="finder.mappingCode"
               :lazy="finder.lazy"
               :types="finder.types"
-              @on-selection-change="_handleFinderSelection">
+              @on-selection-change="_handleSelection">
       </finder>
       <window ref="finderWindow" :title="window.title" width="768px"
               :modal-append-body="true"
               :append-body="false"
-              @on-close="_handleFinderClose">
+              @on-close="_closeWindow">
         <finder ref="windowFinder"
                 :append-body="true"
                 :uuid="finder.uuid"
@@ -27,7 +27,7 @@
                 :mapping-code="finder.mappingCode"
                 :lazy="finder.lazy"
                 :types="finder.types"
-                @on-selection-change="_handleFinderSelection">
+                @on-selection-change="_handleSelection">
         </finder>
       </window>
     </div>
@@ -76,16 +76,16 @@
           }
         },
         methods: {
-          _changeFinderLazy: function () {
+          _changeLazy: function () {
             this.finder.lazy = !this.finder.lazy;
           },
-          _openFinderWindow: function () {
+          _openWindow: function () {
             this.window.status = 0;
           },
-          _handleFinderSelection: function (type, fileIds) {
+          _handleSelection: function (type, fileIds) {
             console.info(fileIds);
           },
-          _handleFinderClose: function () {
+          _closeWindow: function () {
             this.$refs["windowFinder"].clearSelection();
             this.window.status = -1;
           }
