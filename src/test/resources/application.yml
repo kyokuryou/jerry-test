@@ -19,9 +19,19 @@ spring:
     cache-seconds: 3600
   session:
     store-type: jdbc
-  constants:
+
+jerry:
+  context:
     finder:
       directory: /Users/kyokuryou/tmp/upload
+    storage-client:
+      store-type: LOCAL
+      directory: D:/tmp/localTmp
+      hostname: 127.0.0.1
+      port: 21
+      username: 85890327
+      password: Kyo@86865244
+
 mybatis:
   mapper-locations: classpath:/mapping/*.xml
 ---

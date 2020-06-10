@@ -24,6 +24,16 @@ jerry:
   context:
     finder:
       directory: /Users/kyokuryou/tmp/upload
+    storage-client:
+      store-type: CRYPTO
+      directory: /tmp1
+      hostname: 127.0.0.1
+      port: 8881
+    storage-server:
+      enabled: true
+      store-type: CRYPTO
+      directory: D:\tmp
+      port: 8881
 
 ---
 #############################
