@@ -22,8 +22,6 @@ spring:
 
 jerry:
   context:
-    finder:
-      directory: /Users/kyokuryou/tmp/upload
     storage-client:
       store-type: LOCAL
       directory: D:/tmp/localTmp
