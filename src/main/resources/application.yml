@@ -1,8 +1,8 @@
 logging:
-  path: /Users/kyokuryou/tmp/logs/${spring.application.name}
+  path: D:/tmp/logs/${spring.application.name}
   pattern:
-    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n'
-    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n'
+    console: '%-5p %c{1} - %m%n'
+    file: '%d [%7r] %6p - %30.30c - %m%n'
 spring:
   application:
     name: jerry-test
