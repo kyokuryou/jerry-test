@@ -1,8 +1,8 @@
 logging:
-  path: /Users/kyokuryou/tmp/logs/${spring.application.name}
+  path: D:/tmp/logs/${spring.application.name}
   pattern:
-    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n'
-    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n'
+    console: '%-5p %c{1} - %m%n'
+    file: '%d [%7r] %6p - %30.30c - %m%n'
 spring:
   application:
     name: jerry-test
@@ -22,8 +22,16 @@ spring:
 
 jerry:
   context:
-    finder:
-      directory: /Users/kyokuryou/tmp/upload
+    storage-client:
+      store-type: CRYPTO
+      directory: /tmp1
+      hostname: 127.0.0.1
+      port: 8881
+    storage-server:
+      enabled: true
+      store-type: CRYPTO
+      directory: D:\tmp
+      port: 8881
 
 ---
 #############################
