@@ -22,31 +22,43 @@
       <el-divider></el-divider>
       <div>
         <p>授权方式：</p>
-        <p><@shiro.authorizationType value="ACCOUNT">使用帐号授权</@shiro.authorizationType></p>
-        <p><@shiro.authorizationType value="ORGANIZATION">使用机构授权</@shiro.authorizationType></p>
+        <p><@shiro.withAuthorization name="ACCOUNT">使用帐号授权</@shiro.withAuthorization></p>
+        <p><@shiro.withAuthorization name="ORGANIZATION">使用机构授权</@shiro.withAuthorization></p>
       </div>
       <el-divider></el-divider>
       <div>
         <p>机构类型：</p>
-        <p><@shiro.organizationType value="PLATFORM">所属机构是平台</@shiro.organizationType></p>
-        <p><@shiro.organizationType value="COMPANY">所属机构是公司</@shiro.organizationType></p>
-        <p><@shiro.organizationType value="SUBCOMPANY">所属机构是子公司</@shiro.organizationType></p>
-        <p><@shiro.organizationType value="DEPARTMENT">所属机构是部门</@shiro.organizationType></p>
+        <p><@shiro.withinOrganization name="PLATFORM">所属机构是平台</@shiro.withinOrganization></p>
+        <p><@shiro.withinOrganization name="COMPANY">所属机构是公司</@shiro.withinOrganization></p>
+        <p><@shiro.withinOrganization name="SUBCOMPANY">所属机构是子公司</@shiro.withinOrganization></p>
+        <p><@shiro.withinOrganization name="DEPARTMENT">所属机构是部门</@shiro.withinOrganization></p>
       </div>
       <el-divider></el-divider>
       <div>
         <p>角色：</p>
         <p><@shiro.hasRole name="CONSOLE_SUPER_ADMIN">拥有超级管理员角色</@shiro.hasRole></p>
-        <p><@shiro.hasRoles name="CONSOLE_SUPER_ADMIN,CONSOLE_728f9dd0">超级管理员并示例角色</@shiro.hasRoles></p>
-        <p><@shiro.hasAnyRoles name="CONSOLE_SUPER_ADMIN,CONSOLE_728f9dd0">超级管理员或示例角色</@shiro.hasAnyRoles></p>
+        <p>
+          <@shiro.hasRole name="CONSOLE_SUPER_ADMIN">
+            <@shiro.hasRole name="CONSOLE_728f9dd0">
+            超级管理员并示例角色
+            </@shiro.hasRole>
+          </@shiro.hasRole>
+        </p>
+        <p><@shiro.hasAnyRoles names="CONSOLE_SUPER_ADMIN,CONSOLE_728f9dd0">超级管理员或示例角色</@shiro.hasAnyRoles></p>
         <p><@shiro.lacksRole name="CONSOLE_SUPER_ADMIN">不拥有超级管理员角色</@shiro.lacksRole></p>
       </div>
       <el-divider></el-divider>
       <div>
         <p>权限：</p>
         <p><@shiro.hasPermission name="CONSOLE:testFinder:modify">拥有文件管理器修改权限</@shiro.hasPermission></p>
-        <p><@shiro.hasPermissions name="CONSOLE:account:list,CONSOLE:testFinder:modify">拥有帐号列表并文件管理器修改权限</@shiro.hasPermissions></p>
-        <p><@shiro.hasAnyPermissions name="CONSOLE:account:list,CONSOLE:testFinder:modify">拥有帐号列表或文件管理器修改权限</@shiro.hasAnyPermissions></p>
+        <p>
+          <@shiro.hasPermission name="CONSOLE:account:list">
+            <@shiro.hasPermission name="CONSOLE:testFinder:modify">
+            拥有帐号列表并文件管理器修改权限
+            </@shiro.hasPermission>
+          </@shiro.hasPermission>
+          </p>
+        <p><@shiro.hasAnyPermissions names="CONSOLE:account:list,CONSOLE:testFinder:modify">拥有帐号列表或文件管理器修改权限</@shiro.hasAnyPermissions></p>
         <p><@shiro.lacksPermission name="CONSOLE:account:list">不拥有帐号列表权限</@shiro.lacksPermission></p>
       </div>
     </div>

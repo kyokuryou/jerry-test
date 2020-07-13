@@ -1117,9 +1117,9 @@
                   params: "-",
                   remark: "版本号:2.2.228<a target='_blank' href='http://mozilla.github.io/pdf.js/'>官网</a>"
                 },{
-                  prop: "echarts",
+                  prop: "charts",
                   params: "-",
-                  remark: "版本号:4.2.1<a target='_blank' href='https://www.echartsjs.com/zh/index.html'>官网</a>"
+                  remark: "版本号:2.9.3<a target='_blank' href='https://https://www.chartjs.org/'>官网</a>"
                 },{
                   prop: "contextMenu",
                   params: "-",

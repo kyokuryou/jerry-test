@@ -1,22 +1,25 @@
 logging:
-  path: D:/tmp/logs/${spring.application.name}
+  file:
+    path: /Users/kyokuryou/tmp/logs/${spring.application.name}
+  logstash:
+    name: ${spring.application.name}
+    version: 1
+    domains: 192.168.37.189:4560,192.168.37.189:4560
   pattern:
     console: '%-5p %c{1} - %m%n'
     file: '%d [%7r] %6p - %30.30c - %m%n'
+    logstash: '%d [%7r] %6p - %30.30c - %m%n'
 spring:
   application:
     name: jerry-test
-  boot:
-    enableautoconfiguration: false
   profiles:
     active: '@profileActive@'
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
   messages:
     basename: i18n/jerry,i18n/resource
     encoding: UTF-8
-    cache-seconds: 3600
+    cache-duration: 60
   session:
     store-type: jdbc
 
@@ -28,9 +31,9 @@ jerry:
       hostname: 127.0.0.1
       port: 8881
     storage-server:
-      enabled: true
+      enabled: false
       store-type: CRYPTO
-      directory: D:\tmp
+      directory: /Users/kyokuryou/tmp/
       port: 8881
 
 ---
@@ -45,6 +48,9 @@ spring:
     password: 123456
   freemarker:
     cache: false
+  redis:
+    host: localhost
+    password: 123456
 jerry:
   shiro:
     single-session: false

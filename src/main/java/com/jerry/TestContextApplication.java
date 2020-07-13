@@ -1,12 +1,11 @@
 package com.jerry;
 
-import com.jerry.context.autoconfigure.ContextImportSelector;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
@@ -16,12 +15,11 @@ import org.springframework.stereotype.Controller;
         Controller.class, Component.class}
     )
 })
-@Import(ContextImportSelector.class)
 public class TestContextApplication {
 
   public static void main(String[] args) {
     SpringApplication application = new SpringApplication(TestContextApplication.class);
-    application.setWebEnvironment(false);
+    application.setWebApplicationType(WebApplicationType.NONE);
     application.run(args);
   }
 }

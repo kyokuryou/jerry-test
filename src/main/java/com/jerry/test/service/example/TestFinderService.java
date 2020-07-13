@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestFinderService {
 
-  @Autowired
+  @Autowired(required = false)
   private FinderService finderService;
 
   public WebResult modify(PlatformType platform, InputModel input) {

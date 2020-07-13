@@ -5,6 +5,7 @@ import com.jerry.context.common.InputModel;
 import com.jerry.context.common.Pagination;
 import com.jerry.context.exception.ServiceException;
 import com.jerry.context.utils.DateUtil;
+import com.jerry.context.utils.LogUtil;
 import com.jerry.context.utils.ObjectUtil;
 import com.jerry.web.annotation.SupportedRequest;
 import com.jerry.web.common.WebConstants;
@@ -27,6 +28,7 @@ public class ExampleService {
     try {
       return WebModelResult.of(exampleRepository.queryForPagination(pager));
     } catch (NullPointerException e) {
+      LogUtil.error(e);
       throw new ServiceException(2001);
     }
   }

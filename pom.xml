@@ -5,25 +5,25 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>jerry-test</artifactId>
-  <version>1.0.0</version>
+  <version>2.3.1</version>
   <packaging>jar</packaging>
 
   <parent>
-    <artifactId>jerry-project</artifactId>
     <groupId>com.jerry</groupId>
-    <version>1.0.0</version>
+    <artifactId>platform-bom</artifactId>
+    <version>2.3.1</version>
   </parent>
 
   <dependencies>
     <dependency>
       <groupId>com.jerry</groupId>
       <artifactId>jerry-context</artifactId>
-      <version>1.0.0</version>
+      <version>2.3.1</version>
     </dependency>
     <dependency>
       <groupId>com.jerry</groupId>
       <artifactId>jerry-web</artifactId>
-      <version>1.0.0</version>
+      <version>2.3.1</version>
       <exclusions>
         <exclusion>
           <groupId>com.jerry</groupId>
@@ -34,7 +34,7 @@
     <dependency>
       <groupId>com.jerry</groupId>
       <artifactId>jerry-shiro</artifactId>
-      <version>1.0.0</version>
+      <version>2.3.1</version>
       <exclusions>
         <exclusion>
           <groupId>com.jerry</groupId>
@@ -49,7 +49,7 @@
     <dependency>
       <groupId>com.jerry</groupId>
       <artifactId>jerry-web-public</artifactId>
-      <version>1.0.0</version>
+      <version>2.3.1</version>
     </dependency>
 
     <dependency>
@@ -58,8 +58,8 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>druid</artifactId>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
     </dependency>
   </dependencies>
 </project>

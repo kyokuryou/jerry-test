@@ -4,7 +4,6 @@ import com.jerry.context.common.Pagination;
 import com.jerry.context.storage.client.StorageClient;
 import com.jerry.context.utils.FileUtil;
 import com.jerry.context.utils.JacksonUtil;
-import com.jerry.junit.autoconfigure.JunitImportSelector;
 import com.jerry.junit.service.ExampleEntity;
 import com.jerry.junit.service.ExampleMapper;
 import com.jerry.junit.service.ExampleRepository;
@@ -21,7 +20,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -30,7 +29,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootApplication(scanBasePackages = "com.jerry.junit")
 @MapperScan(basePackages = "com.jerry.junit", annotationClass = Mapper.class)
-@Import(JunitImportSelector.class)
 public class JunitApplication extends SpringBootServletInitializer {
 
   @Autowired
@@ -187,7 +185,6 @@ public class JunitApplication extends SpringBootServletInitializer {
     boolean deleteObject = storageClient.deleteObject(fileId);
     System.out.println("deleteObject：" + deleteObject);
   }
-
 
 
   public static void main(String[] args) {
