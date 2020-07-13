@@ -71,7 +71,7 @@
             <span>{{drawer.form.name}}</span>
           </el-form-item>
           <el-form-item label="活动图标">
-            <span>{{drawer.form.icon}}</span>
+            <i :class="drawer.form.icon"></i>
           </el-form-item>
           <el-form-item label="活动区域">
             <span>{{drawer.form.regionName}}</span>
@@ -188,7 +188,7 @@
             rows: [{
               id: 1,
               name: "张三活动",
-              icon: "icofont-bird-wings",
+              icon: "fa fa-angellist",
               region: 1,
               type: [1],
               regionName: "北京",
@@ -197,7 +197,7 @@
             }, {
               id: 2,
               name: "李四活动",
-              icon: "icofont-bow",
+              icon: "fa fa-adn",
               region: 2,
               type: [2, 3],
               regionName: "上海",
