@@ -1,6 +1,6 @@
 <#compress>
   <template>
-    <div class="context-body">
+    <linear-layout>
       <el-row>
         <el-col :span="24">
           当前上传模式：
@@ -30,11 +30,11 @@
                 @on-selection-change="_handleSelection">
         </finder>
       </window>
-    </div>
+    </linear-layout>
   </template>
   <script>
     $.script({
-      imports: ['finder', 'preview'],
+      imports: [ "linear-layout", 'finder', 'preview'],
       exports: {
         data: function () {
           return {

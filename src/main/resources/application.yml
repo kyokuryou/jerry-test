@@ -26,10 +26,8 @@ spring:
 jerry:
   context:
     storage-client:
-      store-type: CRYPTO
-      directory: /tmp1
-      hostname: 127.0.0.1
-      port: 8881
+      store-type: LOCAL
+      directory: /Users/kyokuryou/tmp/upload
     storage-server:
       enabled: false
       store-type: CRYPTO

@@ -1,6 +1,6 @@
 <#compress>
   <template>
-    <div class="context-body">
+    <linear-layout>
       <el-row>
         <el-col :span="24">
         </el-col>
@@ -23,10 +23,10 @@
       </data-grid>
 
       <window ref="testWindow" :title="window.title"
-              width="1000px"
+              width="940px"
               @on-close="handleClose">
         <el-form :model="window.form" :rules="window.rules" ref="testForm"
-                 label-width="100px" label-suffix="：">
+                 label-width="100px" label-suffix="：" style="width: 900px">
           <el-form-item label="活动名称" prop="name">
             <el-input v-model="window.form.name"></el-input>
           </el-form-item>
@@ -83,17 +83,13 @@
             <div v-html="drawer.form.desc"></div>
           </el-form-item>
         </el-form>
-        <div slot="footer">
-          <el-button @click="handleClose">
-            <@spring.message code="ui.operate.close"/>
-          </el-button>
-        </div>
       </drawer>
-    </div>
+    </linear-layout>
   </template>
   <script>
     $.script({
       imports: [
+        "linear-layout",
         "window", "drawer",
         "data-grid",
         "rich-input", "select-grid", "select-icon", "select-tree"
@@ -188,7 +184,7 @@
             rows: [{
               id: 1,
               name: "张三活动",
-              icon: "fa fa-angellist",
+              icon: "mdi mdi-ab-testing",
               region: 1,
               type: [1],
               regionName: "北京",
@@ -197,7 +193,7 @@
             }, {
               id: 2,
               name: "李四活动",
-              icon: "fa fa-adn",
+              icon: "mdi mdi-carrot",
               region: 2,
               type: [2, 3],
               regionName: "上海",
