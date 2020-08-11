@@ -48,8 +48,8 @@
     </dependency>
     <dependency>
       <groupId>com.jerry</groupId>
-      <artifactId>jerry-web-public</artifactId>
-      <version>2.3.1</version>
+      <artifactId>jerry-web-ui</artifactId>
+      <version>2.3.1.ant-design</version>
     </dependency>
 
     <dependency>

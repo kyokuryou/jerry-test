@@ -96,7 +96,7 @@
       ],
       exports: {
         data: function () {
-          var _safe = this;
+          var _self = this;
           return {
             drawer: {
               loading: false,
@@ -204,40 +204,40 @@
         },
         watch: {
           "window.status": function (val, oldval) {
-            var _safe = this;
+            var _self = this;
             if (val === -1) {
-              var _cw = _safe.$refs[_safe.window.refs[oldval]];
+              var _cw = _self.$refs[_self.window.refs[oldval]];
               if (_cw) {
-                _safe.window.title = "";
-                _safe.window.form = {};
-                _safe.window.extend = {};
-                _safe.window.finder.mappingId = 0;
+                _self.window.title = "";
+                _self.window.form = {};
+                _self.window.extend = {};
+                _self.window.finder.mappingId = 0;
                 _cw.close();
               }
               return;
             }
-            var _ow = _safe.$refs[_safe.window.refs[val]];
+            var _ow = _self.$refs[_self.window.refs[val]];
             if (_ow) {
               if (val === 0) {
-                _safe.window.title = '<@spring.message code="ui.operate.create"/>';
+                _self.window.title = '<@spring.message code="ui.operate.create"/>';
               } else if (val === 1) {
-                _safe.window.title = '<@spring.message code="ui.operate.modify"/>';
+                _self.window.title = '<@spring.message code="ui.operate.modify"/>';
               }
               _ow.open();
             }
           },
           "drawer.status": function (val, oldval) {
-            var _safe = this;
+            var _self = this;
             if (val === -1) {
-              var _cw = _safe.$refs[_safe.drawer.refs[oldval]];
+              var _cw = _self.$refs[_self.drawer.refs[oldval]];
               if (_cw) {
-                _safe.drawer.title = "";
-                _safe.drawer.form = {};
+                _self.drawer.title = "";
+                _self.drawer.form = {};
                 _cw.close();
               }
               return;
             }
-            var _ow = _safe.$refs[_safe.drawer.refs[val]];
+            var _ow = _self.$refs[_self.drawer.refs[val]];
             if (_ow) {
               _ow.open();
             }
@@ -245,7 +245,7 @@
         },
         methods: {
           handleLoader: function (params, success, done) {
-            var _safe = this;
+            var _self = this;
             var result = {
               pageNumber: 1,
               pageSize: 20,
@@ -253,7 +253,7 @@
               total: 2,
               sort: "create_time",
               order: "desc",
-              rows: _safe.rows
+              rows: _self.rows
             };
             setTimeout(function () {
               success(result);
@@ -261,12 +261,12 @@
             }, 1000);
           },
           handleEdit: function (id) {
-            var _safe = this;
-            var _item = _safe.rows.find(function (value) {
+            var _self = this;
+            var _item = _self.rows.find(function (value) {
               return value.id === id;
             });
             setTimeout(function () {
-              _safe.window.form = {
+              _self.window.form = {
                 id: _item.id,
                 name: _item.name,
                 icon: _item.icon,
@@ -274,57 +274,57 @@
                 type: _item.type,
                 desc: _item.desc
               };
-              _safe.window.extend = {
+              _self.window.extend = {
                 regionName: _item.regionName,
                 typeNames: _item.typeNames
               };
-              _safe.window.finder.mappingId = _item.id;
-              _safe.window.status = 1;
+              _self.window.finder.mappingId = _item.id;
+              _self.window.status = 1;
             }, 100);
           },
           handleDetail: function (id) {
-            var _safe = this;
-            var _item = _safe.rows.find(function (value) {
+            var _self = this;
+            var _item = _self.rows.find(function (value) {
               return value.id === id;
             });
             setTimeout(function () {
-              _safe.drawer.form = {
+              _self.drawer.form = {
                 name: _item.name,
                 icon: _item.icon,
                 regionName: _item.regionName,
                 typeNames: _item.typeNames,
                 desc: $.escape.html(_item.desc)
               };
-              _safe.drawer.status = 0;
-              _safe.drawer.title = _item.name;
+              _self.drawer.status = 0;
+              _self.drawer.title = _item.name;
             }, 100);
           },
           handleDelete: function (id) {
-            var _safe = this;
+            var _self = this;
             $.msg.confirm("确定要删除？").done(function () {
-              var _index = _safe.rows.findIndex(function (value) {
+              var _index = _self.rows.findIndex(function (value) {
                 return value.id === id;
               });
-              _safe.rows.splice(_index, 1);
+              _self.rows.splice(_index, 1);
             });
           },
           handleSave: function () {
-            var _safe = this;
-            var _form = $.extend({}, _safe.window.form);
-            var _index = _safe.rows.findIndex(function (value) {
+            var _self = this;
+            var _form = $.extend({}, _self.window.form);
+            var _index = _self.rows.findIndex(function (value) {
               return value.id === _form.id;
             });
             _form["typeNames"] = _form.type.map(function (type) {
-              var row = _safe.window.type.rows.find(function (typeRows) {
+              var row = _self.window.type.rows.find(function (typeRows) {
                 return typeRows.id === type;
               });
               return row.name;
             });
-            _form["regionName"] = _safe.window.region.data.find(function (data) {
+            _form["regionName"] = _self.window.region.data.find(function (data) {
               return data.id === _form.region;
             }).label;
-            _safe.rows.splice(_index, 1, _form);
-            _safe.window.status = -1;
+            _self.rows.splice(_index, 1, _form);
+            _self.window.status = -1;
           },
           handleClose: function () {
             this.drawer.status = -1;

@@ -57,22 +57,22 @@
         },
         watch: {
           "finder.lazy": function (val) {
-            var _safe = this;
+            var _self = this;
             if (val) {
-              _safe.button.lazyText = "延时上传";
+              _self.button.lazyText = "延时上传";
             } else {
-              _safe.button.lazyText = "实时上传";
+              _self.button.lazyText = "实时上传";
             }
           },
           "window.status": function (val, oldval) {
-            var _safe = this;
+            var _self = this;
             if (val === -1) {
-              _safe.window.visible = false;
-              _safe.$refs["finderWindow"].close();
+              _self.window.visible = false;
+              _self.$refs["finderWindow"].close();
               return;
             }
-            _safe.window.visible = false;
-            _safe.$refs["finderWindow"].open();
+            _self.window.visible = false;
+            _self.$refs["finderWindow"].open();
           }
         },
         methods: {

@@ -1310,7 +1310,7 @@
                   params: "string,string,object",
                   remark: "根据method,action,params创建表单，并插入到body中"
                 }, {
-                  prop: "$.http.translate",
+                  prop: "$.mixins.http.translate",
                   params: "string",
                   remark: "根据语言类型，切换显示语言（服务器必须配置该语言）"
                 }, {
