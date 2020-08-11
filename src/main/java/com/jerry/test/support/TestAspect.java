@@ -1,9 +1,9 @@
 package com.jerry.test.support;
 
-import com.jerry.web.annotation.WebServiceInterceptor;
+import com.jerry.web.intercept.WebRepositoryInterceptor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TestAspect extends WebServiceInterceptor {
+public class TestAspect extends WebRepositoryInterceptor {
 
 }
