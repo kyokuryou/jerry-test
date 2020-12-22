@@ -64,9 +64,8 @@
     </div>
   </template>
   <script>
-    $.script({
-      imports: [],
-      exports: {
+    defmod(function (){
+      return {
         data: function () {
           return {};
         },
