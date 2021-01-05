@@ -17,7 +17,7 @@ public class TestFinderService {
   public WebResult modify(PlatformType platform, InputModel input) {
     String uuid = input.get("uuid", String.class);
 
-    finderService.saveTemp(uuid, 1L);
+    finderService.saveTemp(uuid,"testGroup");
     return WebStatusResult.success();
   }
 }
