@@ -1,6 +1,6 @@
 logging:
   file:
-    path: /Users/kyokuryou/tmp/logs/${spring.application.name}
+    path: /Users/quliang/Temp/logs/${spring.application.name}
   logstash:
     name: ${spring.application.name}
     version: 1
@@ -27,11 +27,11 @@ jerry:
   context:
     storage-client:
       store-type: LOCAL
-      directory: /Users/kyokuryou/tmp/upload
+      directory: /Users/quliang/Temp/upload
     storage-server:
       enabled: false
       store-type: CRYPTO
-      directory: /Users/kyokuryou/tmp/
+      directory: /Users/quliang/Temp/
       port: 8881
 
 ---
