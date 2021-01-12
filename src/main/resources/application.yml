@@ -17,7 +17,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
   messages:
-    basename: i18n/jerry,i18n/resource
+    basename: i18n/jerry,i18n/jerry-ui,i18n/resource
     encoding: UTF-8
     cache-duration: 60
   session:
@@ -41,7 +41,7 @@ jerry:
 spring:
   profiles: dev
   datasource:
-    url: jdbc:mysql://localhost:3306
+    url: jdbc:mysql://localhost:3306?useSSL=false
     username: root
     password: 123456
   freemarker:
@@ -49,6 +49,7 @@ spring:
   redis:
     host: localhost
     password: 123456
+
 jerry:
   shiro:
     single-session: false
