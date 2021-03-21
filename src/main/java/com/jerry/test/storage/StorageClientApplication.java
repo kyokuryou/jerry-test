@@ -1,4 +1,4 @@
-package com.jerry.junit.storage;
+package com.jerry.test.storage;
 
 import com.jerry.context.autoconfigure.ContextProperties.StorageClientType;
 import com.jerry.context.storage.client.CryptoStorageClient;
@@ -14,7 +14,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
-import org.junit.Test;
 
 public class StorageClientApplication {
 
@@ -23,7 +22,6 @@ public class StorageClientApplication {
   // copyId = \2020-06\12\4d88c739de12d47f8007cec6d517f31f
   private final String copyId = "323032302D30362F31322F3464383863373339646531326434376638303037636563366435313766333166";
 
-  @Test
   public void createFileId() {
     StorageClient storageClient = getStorageClient();
 //    try {
@@ -37,7 +35,6 @@ public class StorageClientApplication {
   /**
    * 文件正常操作
    */
-  @Test
   public void storage() {
     StorageClient storageClient = getStorageClient();
     try {
@@ -65,7 +62,6 @@ public class StorageClientApplication {
   /**
    * 文件覆盖操作
    */
-  @Test
   public void storageOverride() {
     StorageClient storageClient = getStorageClient();
     try {

@@ -1,4 +1,4 @@
-package com.jerry.junit.service;
+package com.jerry.test.example;
 
 import com.jerry.context.common.BaseEntity;
 import javax.persistence.Column;

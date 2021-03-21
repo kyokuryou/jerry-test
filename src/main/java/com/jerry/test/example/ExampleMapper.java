@@ -1,6 +1,5 @@
-package com.jerry.junit.service;
+package com.jerry.test.example;
 
-import com.jerry.context.common.BaseEntity;
 import com.jerry.context.common.Pagination;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;

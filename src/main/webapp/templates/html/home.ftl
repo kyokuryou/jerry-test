@@ -1,6 +1,6 @@
 <#compress>
   <template>
-    <div class="context-body">
+    <div>
       <div>
         <p>是否授权：</p>
         <p><@shiro.authenticated>已登陆</@shiro.authenticated></p>
@@ -12,20 +12,20 @@
           </@shiro.user>
         </p>
       </div>
-      <el-divider></el-divider>
+      <a-divider></a-divider>
       <div>
         <p>用户信息：</p>
         <p>用户ID：<@shiro.principal property="id"/></p>
         <p>用户名：<@shiro.principal property="username"/></p>
         <p>别名：<@shiro.principal property="alias"/></p>
       </div>
-      <el-divider></el-divider>
+      <a-divider></a-divider>
       <div>
         <p>授权方式：</p>
         <p><@shiro.withAuthorization name="ACCOUNT">使用帐号授权</@shiro.withAuthorization></p>
         <p><@shiro.withAuthorization name="ORGANIZATION">使用机构授权</@shiro.withAuthorization></p>
       </div>
-      <el-divider></el-divider>
+      <a-divider></a-divider>
       <div>
         <p>机构类型：</p>
         <p><@shiro.withinOrganization name="PLATFORM">所属机构是平台</@shiro.withinOrganization></p>
@@ -33,7 +33,7 @@
         <p><@shiro.withinOrganization name="SUBCOMPANY">所属机构是子公司</@shiro.withinOrganization></p>
         <p><@shiro.withinOrganization name="DEPARTMENT">所属机构是部门</@shiro.withinOrganization></p>
       </div>
-      <el-divider></el-divider>
+      <a-divider></a-divider>
       <div>
         <p>角色：</p>
         <p><@shiro.hasRole name="CONSOLE_SUPER_ADMIN">拥有超级管理员角色</@shiro.hasRole></p>
@@ -47,7 +47,7 @@
         <p><@shiro.hasAnyRoles names="CONSOLE_SUPER_ADMIN,CONSOLE_728f9dd0">超级管理员或示例角色</@shiro.hasAnyRoles></p>
         <p><@shiro.lacksRole name="CONSOLE_SUPER_ADMIN">不拥有超级管理员角色</@shiro.lacksRole></p>
       </div>
-      <el-divider></el-divider>
+      <a-divider></a-divider>
       <div>
         <p>权限：</p>
         <p><@shiro.hasPermission name="CONSOLE:testFinder:modify">拥有文件管理器修改权限</@shiro.hasPermission></p>

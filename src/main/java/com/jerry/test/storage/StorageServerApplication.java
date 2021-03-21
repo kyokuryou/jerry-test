@@ -1,15 +1,13 @@
-package com.jerry.junit.storage;
+package com.jerry.test.storage;
 
 import com.jerry.context.storage.server.CryptoStorageServer;
 import com.jerry.context.storage.server.StorageServer;
 import com.jerry.context.utils.LogUtil;
 import java.util.concurrent.Executor;
-import org.junit.Test;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 public class StorageServerApplication {
 
-  @Test
   public void cryptoStorage() throws Exception {
     Executor executor = newExecutor();
     StorageServer storageServer = new CryptoStorageServer(executor);
